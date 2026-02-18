@@ -45,7 +45,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         <div className="nav-links desktop">
           <a onClick={() => scrollToSection('home')} className="nav-link">Home</a>
           <a onClick={() => scrollToSection('about')} className="nav-link">About</a>
-          <a onClick={() => scrollToSection('skills')} className="nav-link">Skills</a>
+          <a onClick={() => scrollToSection('experience')} className="nav-link">Experience</a>
           <a onClick={() => scrollToSection('projects')} className="nav-link">Projects</a>
           <a onClick={() => scrollToSection('contact')} className="nav-link">Contact</a>
         </div>
@@ -80,7 +80,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           >
             <a onClick={() => scrollToSection('home')} className="mobile-nav-link">Home</a>
             <a onClick={() => scrollToSection('about')} className="mobile-nav-link">About</a>
-            <a onClick={() => scrollToSection('skills')} className="mobile-nav-link">Skills</a>
+            <a onClick={() => scrollToSection('experience')} className="mobile-nav-link">Experience</a>
             <a onClick={() => scrollToSection('projects')} className="mobile-nav-link">Projects</a>
             <a onClick={() => scrollToSection('contact')} className="mobile-nav-link">Contact</a>
           </motion.div>

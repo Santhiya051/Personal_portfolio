@@ -71,9 +71,6 @@ const Footer = () => {
           <p className="copyright">
             © {new Date().getFullYear()} Santhiya. All rights reserved.
           </p>
-          <p className="built-with">
-            Built with <FiHeart className="heart-icon" /> using React
-          </p>
         </div>
       </div>
     </footer>

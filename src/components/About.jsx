@@ -1,5 +1,15 @@
 import { motion } from 'framer-motion';
 import { FiCode, FiDatabase, FiServer } from 'react-icons/fi';
+import { 
+  SiHtml5, 
+  SiCss3, 
+  SiJavascript, 
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMysql
+} from 'react-icons/si';
 import './About.css';
 
 const About = () => {
@@ -7,17 +17,31 @@ const About = () => {
     {
       icon: <FiCode size={28} />,
       title: 'Frontend Development',
-      description: 'Building responsive UIs with React'
+      description: 'Building responsive UIs with React',
+      skills: [
+        { icon: <SiHtml5 size={32} />, name: 'HTML5', color: '#e34c26' },
+        { icon: <SiCss3 size={32} />, name: 'CSS3', color: '#264de4' },
+        { icon: <SiJavascript size={32} />, name: 'JavaScript', color: '#f0db4f' },
+        { icon: <SiReact size={32} />, name: 'React', color: '#61dafb' }
+      ]
     },
     {
       icon: <FiServer size={28} />,
       title: 'Backend Development',
-      description: 'Creating robust APIs with Node.js'
+      description: 'Creating robust APIs with Node.js',
+      skills: [
+        { icon: <SiNodedotjs size={32} />, name: 'Node.js', color: '#68a063' },
+        { icon: <SiExpress size={32} />, name: 'Express.js', color: '#000000' }
+      ]
     },
     {
       icon: <FiDatabase size={28} />,
       title: 'Database Design',
-      description: 'Architecting efficient data models'
+      description: 'Architecting efficient data models',
+      skills: [
+        { icon: <SiPostgresql size={32} />, name: 'PostgreSQL', color: '#336791' },
+        { icon: <SiMysql size={32} />, name: 'MySQL', color: '#00758f' }
+      ]
     }
   ];
 
@@ -95,6 +119,25 @@ const About = () => {
                 <div className="highlight-icon">{item.icon}</div>
                 <h4 className="highlight-title">{item.title}</h4>
                 <p className="highlight-description">{item.description}</p>
+
+                <div className="skill-icons-row">
+                  {item.skills.map((skill, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="skill-icon-wrapper"
+                      whileHover={{ scale: 1.15, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div 
+                        className="skill-icon-item"
+                        style={{ '--skill-color': skill.color }}
+                      >
+                        {skill.icon}
+                      </div>
+                      <span className="skill-tooltip">{skill.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
             ))}
 

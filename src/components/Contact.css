@@ -172,10 +172,37 @@
   margin-top: 0.5rem;
 }
 
-.form-submit:hover {
+.form-submit:hover:not(:disabled) {
   background: var(--accent-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-error {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.form-success {
+  background: #efe;
+  border: 1px solid #cfc;
+  color: #363;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
 }
 
 .form-submit .btn-icon {

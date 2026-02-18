@@ -83,7 +83,75 @@
 .highlight-description {
   font-size: 0.95rem;
   color: var(--text-secondary);
-  margin: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.skill-icons-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.skill-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.skill-icon-item {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  color: var(--text-secondary);
+}
+
+.skill-icon-item:hover {
+  background: var(--bg-primary);
+  border-color: var(--skill-color);
+  color: var(--skill-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.skill-tooltip {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 10;
+}
+
+.skill-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--primary);
+}
+
+.skill-icon-wrapper:hover .skill-tooltip {
+  opacity: 1;
 }
 
 .stats-container {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiGithub, FiLinkedin, FiSend, FiDownload } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -10,18 +11,115 @@ const Contact = () => {
     message: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: null
+  });
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (formStatus.error) {
+      setFormStatus(prev => ({ ...prev, error: null }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      return 'Please enter your name';
+    }
+    if (!formData.email.trim()) {
+      return 'Please enter your email';
+    }
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      return 'Please enter a valid email address';
+    }
+    if (!formData.message.trim()) {
+      return 'Please enter a message';
+    }
+    if (formData.message.trim().length < 10) {
+      return 'Message must be at least 10 characters long';
+    }
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert('Thank you for your message! This is a demo form.');
-    setFormData({ name: '', email: '', message: '' });
+    
+    // Validate form
+    const validationError = validateForm();
+    if (validationError) {
+      setFormStatus({
+        submitting: false,
+        submitted: false,
+        error: validationError
+      });
+      return;
+    }
+
+    // Set submitting state
+    setFormStatus({
+      submitting: true,
+      submitted: false,
+      error: null
+    });
+
+    try {
+      // EmailJS Configuration
+      // Replace these with your actual EmailJS credentials
+      const serviceID = 'service_trj4oti';      // Get from EmailJS dashboard
+      const templateID = 'template_jx8d0ge';    // Get from EmailJS dashboard
+      const publicKey = 'xbDA8mrC5QCcEeX9e';      // Get from EmailJS dashboard
+
+      // Template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'ksanthiya051@gmail.com',       // Your email address
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceID,
+        templateID,
+        templateParams,
+        publicKey
+      );
+
+      console.log('Email sent successfully:', response);
+
+      // Set success state
+      setFormStatus({
+        submitting: false,
+        submitted: true,
+        error: null
+      });
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({ name: '', email: '', message: '' });
+        setFormStatus({
+          submitting: false,
+          submitted: false,
+          error: null
+        });
+      }, 3000);
+
+    } catch (error) {
+      setFormStatus({
+        submitting: false,
+        submitted: false,
+        error: 'Failed to send message. Please try again or email directly.'
+      });
+    }
   };
 
   const contactInfo = [
@@ -121,6 +219,7 @@ const Contact = () => {
                   onChange={handleChange}
                   className="form-input"
                   placeholder="Your name"
+                  disabled={formStatus.submitting || formStatus.submitted}
                   required
                 />
               </div>
@@ -135,6 +234,7 @@ const Contact = () => {
                   onChange={handleChange}
                   className="form-input"
                   placeholder="your.email@example.com"
+                  disabled={formStatus.submitting || formStatus.submitted}
                   required
                 />
               </div>
@@ -149,12 +249,29 @@ const Contact = () => {
                   className="form-textarea"
                   placeholder="Your message..."
                   rows="6"
+                  disabled={formStatus.submitting || formStatus.submitted}
                   required
                 />
               </div>
 
-              <button type="submit" className="form-submit">
-                Send Message
+              {formStatus.error && (
+                <div className="form-error">
+                  {formStatus.error}
+                </div>
+              )}
+
+              {formStatus.submitted && (
+                <div className="form-success">
+                  ✓ Message sent successfully! Thank you for reaching out.
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                className="form-submit"
+                disabled={formStatus.submitting || formStatus.submitted}
+              >
+                {formStatus.submitting ? 'Sending...' : formStatus.submitted ? 'Sent!' : 'Send Message'}
                 <FiSend className="btn-icon" />
               </button>
             </form>
