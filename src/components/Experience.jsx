@@ -6,7 +6,7 @@ const Experience = () => {
   const experiences = [
     {
       company: 'Hoood Private Limited',
-      role: 'Frontend Developer',
+      role: 'Frontend Developer Intern',
       duration: 'Feb 2026 – Present',
       description: 'Leading frontend development utilizing React, JavaScript, HTML, and CSS to create responsive and user-friendly interfaces. Collaborating with cross-functional teams to implement new features, optimize performance, and enhance user experience. Contributing to the design and architecture of the frontend codebase while adhering to best practices in web development.'
     },
