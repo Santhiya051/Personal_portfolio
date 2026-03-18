@@ -5,8 +5,8 @@ export const projectsData = [
     shortDescription: 'Automated timetable generation system with constraint-based scheduling',
     category: 'Full Stack',
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
-    githubUrl: 'https://github.com/santhiya/schedule-generator',
+    technologies: ['HTML, CSS', 'JavaScript', 'SQLite', 'Python Django', 'Genetic Algorithm'],
+    githubUrl: 'https://github.com/Santhiya051/Smart_Schedule_Generator',
     liveUrl: null,
     featured: true,
     problem: 'Manual timetable creation for educational institutions is time-consuming and often results in scheduling conflicts, resource overlaps, and inefficient time allocation.',
@@ -14,7 +14,6 @@ export const projectsData = [
     features: [
       'Automated timetable generation with conflict detection',
       'Multi-constraint optimization (teachers, rooms, time slots)',
-      'Drag-and-drop interface for manual adjustments',
       'Export schedules to PDF and Excel formats',
       'Real-time validation and conflict resolution',
       'Role-based access for admins and teachers'
@@ -31,9 +30,8 @@ export const projectsData = [
     ],
     architecture: {
       frontend: 'React with Context API for state management, React DnD for drag-and-drop functionality',
-      backend: 'Node.js/Express REST API with JWT authentication',
-      database: 'PostgreSQL with normalized schema for courses, teachers, rooms, and time slots',
-      deployment: 'Frontend on Netlify, Backend on Heroku, Database on ElephantSQL'
+      backend: 'Python Django API with endpoints for schedule generation and validation',
+      database: 'SQLite with normalized schema for courses, teachers, rooms, and time slots',
     },
     learnings: [
       'Algorithm design for constraint satisfaction problems',
@@ -49,7 +47,7 @@ export const projectsData = [
     category: 'Backend',
     image: 'https://images.unsplash.com/photo-1555421689-d68471e189f2?w=800&q=80',
     technologies: ['Node.js', 'Express', 'PostgreSQL', 'JWT', 'Nodemailer', 'bcrypt'],
-    githubUrl: 'https://github.com/santhiya/auth-system',
+    githubUrl: 'https://github.com/Santhiya051/secure_auth_system',
     liveUrl: null,
     featured: true,
     problem: 'Many applications need secure user authentication, but implementing it from scratch involves handling complex security concerns like password hashing, token management, and secure password recovery.',
@@ -57,7 +55,7 @@ export const projectsData = [
     features: [
       'User registration with email verification',
       'Secure login with JWT token generation',
-      'Password hashing using bcrypt (salt rounds: 12)',
+      'Password hashing using bcrypt',
       'Forgot password with secure token-based reset',
       'Email notifications using Nodemailer',
       'Token expiration and refresh mechanism',
@@ -93,21 +91,20 @@ export const projectsData = [
     shortDescription: 'End-to-end scholarship application and management system for educational institutions',
     category: 'Full Stack',
     image: 'https://images.unsplash.com/photo-1427751840561-9852520f8ce8?w=800&q=80',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express', 'Multer'],
-    githubUrl: 'https://github.com/santhiya/scholarship-portal',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
+    githubUrl: 'https://github.com/Santhiya051/Scholarship_Management_Portal',
     liveUrl: null,
     featured: true,
     problem: 'Scholarship application processes are often paper-based, leading to inefficiencies, lost documents, and difficulty in tracking application status.',
     solution: 'Created a digital platform that streamlines the entire scholarship lifecycle from application submission to approval, with document management and automated notifications.',
     features: [
-      'Student application form with document upload',
-      'File upload validation (size, type, virus scanning)',
-      'Multi-stage approval workflow (HOD → Principal → Management)',
+      'automatically generate conflict-free timetables',
+      'Multi-stage approval workflow with role-based access',
       'Application status tracking dashboard',
       'Automated email notifications at each stage',
       'Admin panel for application review and filtering',
       'Document preview and download functionality',
-      'Search and filter by criteria (grade, income, category)'
+      'Search and filter by criteria (student, status, date)'
     ],
     challenges: [
       {
@@ -122,8 +119,7 @@ export const projectsData = [
     architecture: {
       frontend: 'React with React Router for multi-page navigation',
       backend: 'Express API with role-based middleware for authorization',
-      database: 'PostgreSQL with relational schema for students, applications, and approvals',
-      storage: 'Local file system with organized directory structure (production would use S3)'
+      database: 'PostgreSQL with relational schema for students, applications, and approvals'
     },
     learnings: [
       'File upload handling and validation best practices',

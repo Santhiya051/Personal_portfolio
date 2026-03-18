@@ -156,7 +156,7 @@ const handleChange = (e) => {
           <h2 className="section-title">Get In Touch</h2>
           <div className="divider"></div>
           <p className="section-description">
-            I'm actively seeking internship and entry-level opportunities. Let's connect!
+            I'm actively seeking entry-level opportunities. Let's connect!
           </p>
         </motion.div>
 
